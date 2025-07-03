@@ -20,6 +20,6 @@ public class MobListener implements Listener {
 
         double damage = event.getDamage();
         mobManager.handleDamage(entity, damage);
-        event.setCancelled(true);
+        event.setDamage(0.0);
     }
 }

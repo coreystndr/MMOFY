@@ -27,7 +27,6 @@ public class CustomMob {
         currentHealth -= amount;
         if (currentHealth <= 0) {
             entity.remove();
-            // Drop, Nachricht, usw.
         } else {
             updateHealthDisplay();
         }
