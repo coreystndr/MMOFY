@@ -1,4 +1,4 @@
-package de.icor.mmofy.mob;
+package de.icor.mmofy.custommob;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
@@ -7,19 +7,20 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class MobListener implements Listener {
 
-    private final MobManager mobManager;
+    private final MobRegistry mobRegistry;
 
-    public MobListener(MobManager mobManager) {
-        this.mobManager = mobManager;
+    public MobListener(MobRegistry mobRegistry) {
+        this.mobRegistry = mobRegistry;
     }
 
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
         Entity entity = event.getEntity();
-        if (!mobManager.isCustomMob(entity)) return;
+        if (!mobRegistry.isCustomMob(entity)) return;
 
         double damage = event.getDamage();
-        mobManager.handleDamage(entity, damage);
+        mobRegistry.handleDamage(entity, damage, event.getCause());
+
         event.setDamage(0.0);
     }
 }
