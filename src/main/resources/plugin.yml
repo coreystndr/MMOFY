@@ -1,0 +1,4 @@
+name: mmofy
+version: '1.0-SNAPSHOT'
+main: de.icor.mmofy.Main
+api-version: '1.21'
